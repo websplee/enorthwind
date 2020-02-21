@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  mysql-db:
+    image: mysql:8.0.19
+    volumes:
+      - ./InitData:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql123
+      MYSQL_DATABASE: northwind
+    ports:
+      - "3308:3306"
+  admin:    
+    image: adminer    
+    ports:      
+      - "8282:8282"
